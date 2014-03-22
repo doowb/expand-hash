@@ -1,0 +1,41 @@
+{
+  "name": "expand-hash",
+  "version": "0.1.0",
+  "description": "Expand hash keys into an object with the given values.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doowb/expand-hash"
+  },
+  "keywords": [
+    "hash",
+    "expand"
+  ],
+  "author": {
+    "name": "Brian Woodward",
+    "url": "http://github.com/doowb/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doowb/expand-hash/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0",
+    "verb": "~0.1.10"
+  },
+  "homepage": "https://github.com/doowb/expand-hash",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/doowb/expand-hash/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">=0.8"
+  }
+}
