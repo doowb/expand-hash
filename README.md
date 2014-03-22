@@ -5,9 +5,6 @@
 ## Getting Started
 
 
-## Options
-
-
 ## Usage Examples
 
 

@@ -1,46 +1,33 @@
 ## Example #1
 
-> Find the nearest path for the provided search string.
+> Expand basic key-value pairs (nothing special)
 
 ```js
 var expandHash = require('expand-hash');
-var search = 'index';
-var paths = [
-  'foo/bar/baz/about.md',
-  'foo/bar/baz/index.md',
-  'foo/bar/about.md',
-  'foo/bar/index.md',
-  'foo/about.md',
-  'foo/index.md'
-];
+var hash = {
+  'foo': 'bar',
+  'baz': 'bang'
+};
 
-var foundPath = expandHash(search, paths);
-console.log('foundPath: ', foundPath);
+var expanded = expandHash(hash);
+console.log('expanded: ', expanded);
 ```
 
-> Outputs 'foundPath: foo/index.md'
+> Outputs `expanded: { foo: 'bar', baz: 'bang' }`
 
 ## Example #2
 
-> Find all paths for the provided search string.
+> Expand complex keys into object paths
 
 ```js
 var expandHash = require('expand-hash');
-var options = {
-  all: true
+var hash = {
+  'foo.bar': 'bar',
+  'foo.baz': 'baz',
+  'something': 'else'
 };
-var search = 'index';
-var paths = [
-  'foo/bar/baz/about.md',
-  'foo/bar/baz/index.md',
-  'foo/bar/about.md',
-  'foo/bar/index.md',
-  'foo/about.md',
-  'foo/index.md'
-];
-
-var foundPaths = expandHash(search, paths, options);
-console.log('foundPaths: ', foundPaths);
+var expanded = expandHash(hash);
+console.log('expanded: ', expanded);
 ```
 
-> Outputs 'foundPaths: foo/bar/baz/index.md,foo/bar/index.md/foo/index.md'
+> Outputs `expanded: { foo: { bar: 'bar', baz: 'baz' }, something: 'else' }`

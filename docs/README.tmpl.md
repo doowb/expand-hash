@@ -5,9 +5,6 @@
 ## Getting Started
 {%= docs("quickstart") %}
 
-## Options
-{%= docs("options") %}
-
 ## Usage Examples
 {%= docs("examples") %}
 
