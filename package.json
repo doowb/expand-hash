@@ -4,7 +4,7 @@
   "description": "Expand hash keys into an object with the given values.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
