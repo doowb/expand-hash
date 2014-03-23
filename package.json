@@ -1,6 +1,6 @@
 {
   "name": "expand-hash",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Expand hash keys into an object with the given values.",
   "main": "index.js",
   "scripts": {
