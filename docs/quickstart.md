@@ -7,7 +7,5 @@ npm i {%= name %} --save
 Use within your application with the following line of JavaScript:
 
 ```js
-var {%= safename(name) %} = require('{%= name %}');
+var expandHash = require('expand-hash');
 ```
-
-

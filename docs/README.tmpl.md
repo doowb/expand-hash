@@ -1,11 +1,11 @@
-# {%= name %} {%=  badge("fury") %} {%=  badge("travis") %}
+# {%= name %} {%=  badge("fury") %}
 
 > {%= description %}
 
 ## Getting Started
 {%= docs("quickstart") %}
 
-## Usage Examples
+## Usage
 {%= docs("examples") %}
 
 ## Contributing
