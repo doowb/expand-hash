@@ -12,14 +12,13 @@ npm i expand-hash --save
 Use within your application with the following line of JavaScript:
 
 ```js
-var expand-hash = require('expand-hash');
+var expandHash = require('expand-hash');
 ```
 
 ## Usage
-> Expand complex keys into object paths
+Expand keys into object paths.
 
 ```js
-var expandHash = require('expand-hash');
 var hash = {
   'foo.bar': 'bar',
   'foo.baz': 'baz',
@@ -29,7 +28,17 @@ var expanded = expandHash(hash);
 console.log('expanded: ', expanded);
 ```
 
-> Outputs `expanded: { foo: { bar: 'bar', baz: 'baz' }, something: 'else' }`
+Results in
+
+```js
+expanded: {
+  foo: {
+    bar: 'bar',
+    baz: 'baz'
+  },
+  something: 'else'
+}
+```
 
 ## Contributing
 Find a bug? Have a feature request? Please [create an Issue](https://github.com/doowb/expand-hash/issues).
