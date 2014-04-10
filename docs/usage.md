@@ -1,28 +1,25 @@
-Use within your application with the following line of JavaScript:
+Use dot notation to recursively expand object keys into nested objects.
 
 ```js
 var expandHash = require('expand-hash');
-```
-
-Expand keys into object paths.
-
-```js
-var hash = {
-  'foo.bar': 'bar',
-  'foo.baz': 'baz',
-  'something': 'else'
-};
+var hash = {'foo.bar.baz.bang': 'fez', a: 'b'};
 console.log(expandHash(hash));
 ```
 
-Results in
+expands to:
 
 ```js
-expanded: {
-  foo: {
-    bar: 'bar',
-    baz: 'baz'
-  },
-  something: 'else'
-}
+// the original key's value is inherited by the last object
+{foo: {bar: {baz: {bang: 'fez'} } }, a: 'b'}
+```
+
+Also recursively expands keys in nested objects, so that:
+
+```js
+{ one: { 'two.three.four.five': 'bar'}, bang: 'fez'}
+```
+expands to:
+
+```js
+{ one: {two: {three: {four: {five: 'bar'} } } }, bang: 'fez' }
 ```

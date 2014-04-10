@@ -1,7 +1,7 @@
 {
   "name": "expand-hash",
-  "version": "0.1.2",
-  "description": "Expand a hash key into an object using dot notation.",
+  "version": "0.2.0",
+  "description": "Recursively expands hash keys into objects.",
   "author": {
     "name": "Brian Woodward",
     "url": "http://github.com/doowb/"
@@ -37,10 +37,12 @@
   "engines": {
     "node": ">=0.8"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
   "devDependencies": {
     "chai": "~1.8.1",
     "mocha": "~1.17.0",
-    "verb": "~0.1.10"
+    "verb": "~0.2.1"
   }
 }
