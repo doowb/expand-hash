@@ -90,3 +90,13 @@ describe('when keys are nested', function () {
     done();
   });
 });
+
+describe('when the value is an object', function() {
+  it('should expand the prop strings into objects', function (done) {
+    var complex = {'foo.bar': {'aaa': 'bbbb', 'ccc': 'dddd', 'eee': 'ffff'} };
+    var expected = {foo: {bar: {'aaa': 'bbbb', 'ccc': 'dddd', 'eee': 'ffff'} } };
+    var actual = expandHash(complex);
+    expect(actual).to.eql(expected);
+    done();
+  });
+});

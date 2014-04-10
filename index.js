@@ -44,19 +44,13 @@ var expand = function (obj) {
 var recurse = module.exports = function(value) {
   var orig = value, data = {};
 
-  // We only want strings and objects.
   Object.keys(value).forEach(function(key) {
-    // If it's a string, try to expand the value
-    if (type(value[key]) === 'string') {
-      _.extend(data, expand(value));
-    // If it's an object, try to expand the key
-    } else if (type(value[key]) === 'object') {
+    _.extend(data, expand(value));
+    if (type(value[key]) === 'object') {
       value[key] = _.extend(expand(value[key]), recurse(value[key]));
-      _.extend(data, value);
     } else {
       return value;
     }
   });
-
   return data;
 };
