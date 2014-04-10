@@ -1,3 +1,9 @@
+Use within your application with the following line of JavaScript:
+
+```js
+var expandHash = require('expand-hash');
+```
+
 Expand keys into object paths.
 
 ```js
@@ -6,8 +12,7 @@ var hash = {
   'foo.baz': 'baz',
   'something': 'else'
 };
-var expanded = expandHash(hash);
-console.log('expanded: ', expanded);
+console.log(expandHash(hash));
 ```
 
 Results in

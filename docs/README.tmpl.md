@@ -1,18 +1,23 @@
+---
+username:  doowb
+author:
+  name:    Brian Woodward
+---
 # {%= name %} {%=  badge("fury") %}
 
 > {%= description %}
 
 ## Getting Started
-{%= docs("quickstart") %}
+{%= include("install", {save: '--save'}) %}
 
 ## Usage
-{%= docs("examples") %}
+{%= docs("usage") %}
 
 ## Contributing
 {%= contrib("contributing") %}
 
 ## Author
-{%= contrib("authors") %}
+{%= contrib("brian") %}
 
 ## License
 {%= copyright() %}
