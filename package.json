@@ -1,12 +1,12 @@
 {
   "name": "expand-hash",
-  "version": "0.2.1",
   "description": "Recursively expands hash keys into objects.",
+  "version": "0.2.1",
+  "homepage": "https://github.com/doowb/expand-hash",
   "author": {
     "name": "Brian Woodward",
     "url": "http://github.com/doowb/"
   },
-  "homepage": "https://github.com/doowb/expand-hash",
   "repository": {
     "type": "git",
     "url": "https://github.com/doowb/expand-hash"
@@ -14,12 +14,27 @@
   "bugs": {
     "url": "https://github.com/doowb/expand-hash/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/doowb/expand-hash/blob/master/LICENSE-MIT"
-    }
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/doowb/expand-hash/blob/master/LICENSE"
+  },
+  "files": [
+    "index.js"
   ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "mocha": "~1.17.0"
+  },
   "keywords": [
     "hash",
     "object",
@@ -29,20 +44,5 @@
     "config values",
     "keys",
     "expand"
-  ],
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha -R spec"
-  },
-  "engines": {
-    "node": ">=0.8"
-  },
-  "dependencies": {
-    "lodash": "~2.4.1"
-  },
-  "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "~1.17.0",
-    "verb": "~0.2.1"
-  }
+  ]
 }
