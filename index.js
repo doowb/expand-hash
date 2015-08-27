@@ -1,5 +1,5 @@
-const _ = require('lodash');
-const toString = Object.prototype.toString;
+var _ = require('lodash');
+var toString = Object.prototype.toString;
 
 function type(val) {
   return toString.call(val).toLowerCase().replace(/\[object ([\S]+)\]/, '$1');
