@@ -3,7 +3,7 @@
   "description": "Recursively expands hash keys into objects.",
   "version": "0.2.2",
   "homepage": "https://github.com/doowb/expand-hash",
-  "author": "Brian Woodward (http://github.com/doowb/)",
+  "author": "Brian Woodward (https://github.com/doowb)",
   "repository": {
     "type": "git",
     "url": "https://github.com/doowb/expand-hash"

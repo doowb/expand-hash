@@ -65,7 +65,7 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 **Brian Woodward**
 
 + [github/doowb](https://github.com/doowb)
-* [twitter/doowb](http://twitter.com/doowb)
++ [twitter/doowb](http://twitter.com/doowb)
 
 ## License
 
