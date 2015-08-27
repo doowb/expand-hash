@@ -40,7 +40,15 @@ var expand = function (obj) {
 };
 
 
-// recursively expand the keys on each object
+/**
+ * Recursively expand the keys on each object
+ *
+ * @name  expand-hash
+ * @param  {Object} `value` Object to expand
+ * @return {Object} Expanded object
+ * @api public
+ */
+
 var recurse = module.exports = function(value) {
   var orig = value, data = {};
 
