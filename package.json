@@ -1,7 +1,7 @@
 {
   "name": "expand-hash",
   "description": "Recursively expands hash keys into objects.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/doowb/expand-hash",
   "author": "Brian Woodward (http://github.com/doowb/)",
   "repository": {
@@ -23,7 +23,7 @@
     "node": ">=0.8"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "dependencies": {
     "lodash": "~2.4.1"
