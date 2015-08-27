@@ -26,14 +26,15 @@
     "node": ">=0.8"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
   },
   "dependencies": {
     "lodash": "~2.4.1"
   },
   "devDependencies": {
     "chai": "~1.8.1",
-    "mocha": "~1.17.0"
+    "mocha": "*",
+    "should": "*"
   },
   "keywords": [
     "hash",
