@@ -1,4 +1,4 @@
-var _ = require('lodash');
+var extend = require('extend-shallow');
 var toString = Object.prototype.toString;
 
 function type(val) {
@@ -53,9 +53,9 @@ var recurse = module.exports = function(value) {
   var orig = value, data = {};
 
   Object.keys(value).forEach(function(key) {
-    _.extend(data, expand(value));
+    extend(data, expand(value));
     if (type(value[key]) === 'object') {
-      value[key] = _.extend(expand(value[key]), recurse(value[key]));
+      value[key] = extend(expand(value[key]), recurse(value[key]));
     } else {
       return value;
     }
