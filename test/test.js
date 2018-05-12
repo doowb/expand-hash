@@ -1,102 +1,55 @@
-var expect = require('chai').expect,
-    expandHash = require('..');
+'use strict';
 
-describe('expand-hash', function() {
+require('mocha');
+const assert = require('assert');
+const expandHash = require('..');
 
-  /***
-  var expandHash = require('expand-hash');
-  var hash = {
-    'foo': 'bar',
-    'baz': 'bang'
-  };
-
-  var expanded = expandHash(hash);
-  console.log('expanded: ', expanded);
-  ***/
-
-  it('expand simple hash', function(done) {
-    var simple = { 'foo': 'bar', 'baz': 'bang' };
-    var expected = { foo: 'bar', baz: 'bang' };
-    var actual = expandHash(simple);
-    expect(actual).to.eql(expected);
-    done();
+describe('expand-hash', () => {
+  it('expand simple hash', () => {
+    assert.deepEqual(expandHash({ foo: 'bar', baz: 'bang' }), { foo: 'bar', baz: 'bang' });
   });
 
-  /***
-  var expandHash = require('expand-hash');
-  var hash = {
-    'foo.bar': 'bar',
-    'foo.baz': 'baz',
-    'something': 'else'
-  };
-  var expanded = expandHash(hash);
-  console.log('expanded: ', expanded);
-  **/
-
-  it('expand complex hash', function (done) {
-    var complex = { 'foo.bar': 'bar', 'foo.baz': 'baz', 'beep.boop': 'bop', 'something': 'else' };
-    var expected = { foo: { bar: 'bar', baz: 'baz' }, beep: { boop: 'bop' }, something: 'else' };
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
+  it('expand multiple props with the same keys', () => {
+    assert.deepEqual(expandHash({ 'foo.bar': 'bar', 'foo.baz': 'baz', 'beep.boop': 'bop', something: 'else' }), {
+      foo: { bar: 'bar', baz: 'baz' },
+      beep: { boop: 'bop' },
+      something: 'else'
+    });
   });
 
-  it('expand complex hash', function (done) {
-    var complex = {'one.two.three.four.five': 'bar', bang: 'fez'};
-    var expected = {one: {two: {three: {four: {five: 'bar'} } } }, bang: 'fez' };
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
+  it('expand to deeply nested object', () => {
+    const complex = { 'one.two.three.four.five': 'bar', bang: 'fez' };
+    const expected = { one: { two: { three: { four: { five: 'bar' } } } }, bang: 'fez' };
+    const actual = expandHash(complex);
+    assert.deepEqual(actual, expected);
   });
-});
 
-describe('when keys are nested', function() {
-  it('should expand the prop strings into objects', function (done) {
-    var complex = { one: { 'two.three.four.five': 'bar'}, bang: 'fez'};
-    var expected = {one: {two: {three: {four: {five: 'bar'} } } }, bang: 'fez' };
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
+  it('should expand nested keys into objects', () => {
+    assert.deepEqual(expandHash({ one: { 'two.three.four.five': 'bar' }, bang: 'fez' }), {
+      one: { two: { three: { four: { five: 'bar' } } } },
+      bang: 'fez'
+    });
+
+    assert.deepEqual(expandHash({ a: ['b', 'c'], one: { 'two.three.four.five': 'bar' }, bang: 'fez' }), {
+      a: ['b', 'c'],
+      one: { two: { three: { four: { five: 'bar' } } } },
+      bang: 'fez'
+    });
   });
-});
 
-describe('when keys are nested', function() {
-  it('should expand the prop strings into objects', function (done) {
-    var complex = { a: ['b', 'c'], one: { 'two.three.four.five': 'bar'}, bang: 'fez'};
-    var expected = { a: ['b', 'c'], one: {two: {three: {four: {five: 'bar'} } } }, bang: 'fez' };
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
+  it('should expand keys on object values into objects', () => {
+    assert.deepEqual(expandHash({ a: ['b', 'c'], one: { two: { three: { 'four.five': 'bar' } } }, bang: 'fez' }), {
+      a: ['b', 'c'],
+      one: { two: { three: { four: { five: 'bar' } } } },
+      bang: 'fez'
+    });
   });
-});
 
-describe('when keys are nested', function() {
-  it('should expand the prop strings into objects', function (done) {
-    var complex = { a: ['b', 'c'], one: {two: {three: { 'four.five': 'bar'} } }, bang: 'fez' };
-    var expected = { a: ['b', 'c'], one: {two: {three: {four: {five: 'bar'} } } }, bang: 'fez' };
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
-  });
-});
-
-
-describe('when keys are nested', function () {
-  it('should expand the prop strings into objects', function (done) {
-    var complex = {a: ['b', 'c'], one: {two: {three: {four: {five: {six: {seven: {'a.b.c.d.e.f.g': 'Dante\'s ninth circle'} } } } } } }, bang: 'fez'};
-    var expected = {a: ['b', 'c'], one: {two: {three: {four: {five: {six: {seven: {a: {b: {c: {d: {e: {f: {g: 'Dante\'s ninth circle'} } } } } } } } } } } } }, bang: 'fez'};
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
-  });
-});
-
-describe('when the value is an object', function() {
-  it('should expand the prop strings into objects', function (done) {
-    var complex = {'foo.bar': {'aaa': 'bbbb', 'ccc': 'dddd', 'eee': 'ffff'} };
-    var expected = {foo: {bar: {'aaa': 'bbbb', 'ccc': 'dddd', 'eee': 'ffff'} } };
-    var actual = expandHash(complex);
-    expect(actual).to.eql(expected);
-    done();
+  it('should expand keys in arrays into objects', () => {
+    assert.deepEqual(expandHash({ a: [{'a.b': 'c'}, 'c'], one: { two: { three: { 'four.five': 'bar' } } }, bang: 'fez' }), {
+      a: [ { a: { b: 'c' } }, 'c' ],
+      one: { two: { three: { four: { five: 'bar' } } } },
+      bang: 'fez'
+    });
   });
 });

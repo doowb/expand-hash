@@ -1,64 +1,37 @@
-var extend = require('extend-shallow');
-var toString = Object.prototype.toString;
+'use strict';
 
-function type(val) {
-  return toString.call(val).toLowerCase().replace(/\[object ([\S]+)\]/, '$1');
-}
-
-function namespace(obj, str, value) {
-  var original = str, name;
-
-  if (!/\./.test(str)) {
-    obj[str] = value;
-    return obj;
+module.exports = function expand(value) {
+  if (!isObject(value)) return value;
+  const res = Array.isArray(value) ? [] : {};
+  for (const key of Object.keys(value)) {
+    set(res, key, expand(value[key]));
   }
-
-  var paths = str.split('.');
-  while (paths.length > 0) {
-    var key = paths.shift();
-    name = namespace((obj[key] = obj[key] || {}), paths.join('.'), value);
-    if (str === original) { break; }
-  }
-  return name;
-}
-
-var expand = function (obj) {
-  var result = {};
-
-  Object.keys(obj).forEach(function(key) {
-    if (!/\./.test(key)) {
-      result[key] = obj[key];
-    } else {
-      var paths = key.split('.');
-      paths = ['__remove__'].concat(paths);
-      result[paths[0]] = namespace(result, key, obj[key]);
-    }
-  });
-
-  delete result.__remove__;
-  return result;
+  return res;
 };
 
+function set(obj, prop, val) {
+  const segs = split(prop);
+  const last = segs.pop();
+  while (segs.length) {
+    const key = segs.shift();
+    obj = obj[key] || (obj[key] = {});
+  }
+  obj[last] = val;
+}
 
-/**
- * Recursively expand the keys on each object
- *
- * @name  expand-hash
- * @param  {Object} `value` Object to expand
- * @return {Object} Expanded object
- * @api public
- */
-
-var recurse = module.exports = function(value) {
-  var orig = value, data = {};
-
-  Object.keys(value).forEach(function(key) {
-    extend(data, expand(value));
-    if (type(value[key]) === 'object') {
-      value[key] = extend(expand(value[key]), recurse(value[key]));
-    } else {
-      return value;
+function split(str) {
+  const segs = str.split('.');
+  const keys = [];
+  for (let i = 0; i < segs.length; i++) {
+    const seg = segs[i];
+    while (seg.slice(-1) === '\\') {
+      seg = seg.slice(0, -1) + '.' + (segs[++i] || '');
     }
-  });
-  return data;
-};
+    keys.push(seg);
+  }
+  return keys;
+}
+
+function isObject(val) {
+  return val !== null && typeof val === 'object';
+}
