@@ -1,6 +1,6 @@
 # expand-hash [![NPM version](https://img.shields.io/npm/v/expand-hash.svg?style=flat)](https://www.npmjs.com/package/expand-hash) [![NPM monthly downloads](https://img.shields.io/npm/dm/expand-hash.svg?style=flat)](https://npmjs.org/package/expand-hash) [![NPM total downloads](https://img.shields.io/npm/dt/expand-hash.svg?style=flat)](https://npmjs.org/package/expand-hash) [![Linux Build Status](https://img.shields.io/travis/doowb/expand-hash.svg?style=flat&label=Travis)](https://travis-ci.org/doowb/expand-hash)
 
-> Recursively expands property keys with dot-notation into into objects.
+> Recursively expands property keys with dot-notation into objects.
 
 Please consider following this project's author, [Brian Woodward](https://github.com/doowb), and consider starring the project to show your :heart: and support.
 
