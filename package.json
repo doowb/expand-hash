@@ -1,51 +1,55 @@
 {
   "name": "expand-hash",
-  "description": "Recursively expands hash keys into objects.",
+  "description": "Recursively expands property keys with dot-notation into into objects.",
   "version": "0.2.2",
   "homepage": "https://github.com/doowb/expand-hash",
   "author": "Brian Woodward (https://github.com/doowb)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/doowb/expand-hash"
-  },
+  "repository": "doowb/expand-hash",
   "bugs": {
     "url": "https://github.com/doowb/expand-hash/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/doowb/expand-hash/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "files": [
     "index.js"
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=0.8"
+    "node": ">=4"
   },
   "scripts": {
-    "test": "mocha -R spec"
-  },
-  "dependencies": {
-    "lodash": "~2.4.1"
+    "test": "mocha"
   },
   "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "*",
-    "should": "*"
+    "gulp-format-md": "^1.0.0",
+    "mocha": "^5.1.1"
   },
   "keywords": [
-    "hash",
-    "object",
-    "values",
-    "string",
-    "dot notation",
     "config values",
+    "dot notation",
+    "expand",
+    "hash",
     "keys",
-    "expand"
+    "object",
+    "string",
+    "values"
   ],
   "verb": {
-    "related": {
-      "list": []
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "data": {
+      "author": {
+        "linkedin": "woodwardbrian",
+        "twitter": "doowb"
+      }
+    },
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
     }
   }
 }
