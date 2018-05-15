@@ -48,6 +48,12 @@
     "plugins": [
       "gulp-format-md"
     ],
+    "related": {
+      "list": [
+        "stringify-keys",
+        "expand-object"
+      ]
+    },
     "lint": {
       "reflinks": true
     }
